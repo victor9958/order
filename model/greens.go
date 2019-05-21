@@ -12,7 +12,7 @@ type Greens struct {
 	CreatedTime int			`json:"created_time"`
 	UpdatedTime int			`json:"updated_time"`
 	DeletedTime int			`json:"deleted_time"`
-
+	GreensClassify     *GreensClassify        `json:"greens_classify" orm:"rel(fk)"`
 }
 
 

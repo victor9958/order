@@ -49,4 +49,37 @@ func (this *GreensController) Index() {
 	this.ReturnJson(map[string]interface{}{"code":0,"data":newSlice},200)
 }
 
+func (this *GreensController) Ceshi() {
+	//店家id
+	shopId,err := this.GetStringChangeInt("shop_id")
+	if err != nil {
+		this.ReturnJson(map[string]string{"message":err.Error()},400)
+	}
+
+	var greens []model.Greens
+	o := orm.NewOrm().QueryTable("greens").Filter("shop_id",shopId)
+
+	o =o.Filter("deleted_time",0).OrderBy("-id")
+	_,err2 :=o.All(&greens)
+	if err2 != nil {
+		this.ReturnJson(map[string]string{"message":"查询错误"},400)
+	}
+	var greensClassifys []model.GreensClassify
+	//var greensClassifysMaps []orm.Params
+	_,err3 := orm.NewOrm().QueryTable("greens_classify").Filter("deleted_time",0).RelatedSel().All(&greensClassifys)
+
+	var test model.GreensClassify
+	err4 := orm.NewOrm().QueryTable("greens_classify").Filter("id",1).RelatedSel().One(&test)
+	if err4 != nil {
+		this.ReturnJson(map[string]string{"message":"查询错误"},400)
+	}
+	if err3 != nil {
+		this.ReturnJson(map[string]string{"message":"查询错误"},400)
+	}
+	this.ReturnJson(map[string]interface{}{"code":0,"data":greensClassifys,"test":test},200)
+}
+
+
+
+
 
