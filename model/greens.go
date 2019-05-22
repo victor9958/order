@@ -3,7 +3,7 @@ package model
 type Greens struct {
 	Id int             		`json:"id"`
 	ShopId int             	`json:"shop_id"`
-	BossClassifyId int 		`json:"boss_classify_id"`
+	//BossClassifyId int 		`json:"boss_classify_id"`
 	Name string     		`json:"name"`
 	Price string     		`json:"price"`
 	ImgUrl string 			`json:"img_url"`
