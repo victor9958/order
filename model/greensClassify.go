@@ -8,6 +8,7 @@ type GreensClassify struct {
 	UpdatedTime int			`json:"updated_time"`
 	DeletedTime int			`json:"deleted_time"`
 	Greens []*Greens	`orm:"reverse(many)"`
+	//Posts        []*Post   `orm:"reverse(many)" json:"-"`
 
 }
 
