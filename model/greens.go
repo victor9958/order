@@ -1,7 +1,11 @@
 package model
 
+import (
+	_ "github.com/go-sql-driver/mysql"
+)
+
 type Greens struct {
-	Id int             		`json:"id"`
+	Id int             		`xorm:"not null pk autoincr INT(11)" json:"id"`
 	ShopId int             	`json:"shop_id"`
 	//BossClassifyId int 		`json:"boss_classify_id"`
 	Name string     		`json:"name"`
@@ -12,9 +16,13 @@ type Greens struct {
 	CreatedTime int			`json:"created_time"`
 	UpdatedTime int			`json:"updated_time"`
 	DeletedTime int			`json:"deleted_time"`
-	GreensClassify     *GreensClassify        `orm:"rel(fk)" json:"greens_classify"`
+	GreensClassifyId  int		`xorm:"not null INT(11)" json:"greens_classify_id"`
+	//GreensClassify     *GreensClassify        `orm:"rel(fk)" json:"greens_classify"`
 	//Posts        []*Post   `orm:"reverse(many)" json:"-"`
 
 }
+
+
+
 
 
