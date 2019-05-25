@@ -113,9 +113,6 @@ func (this *GreensController) Index() {
 		}
 		//greensClassifysRes[v.GreensClassifyId].ClassifyName = v.ClassifyName
 	}
-	//for k,v := range greens{
-	//
-	//}
 	this.ReturnJson(map[string]interface{}{"code":0,"data":greensClassifys,"greens":greens},200)
 //}
 }
