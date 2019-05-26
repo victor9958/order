@@ -113,7 +113,13 @@ func (this *GreensController) Index() {
 		}
 		//greensClassifysRes[v.GreensClassifyId].ClassifyName = v.ClassifyName
 	}
-	this.ReturnJson(map[string]interface{}{"code":0,"data":greensClassifys,"greens":greens},200)
+
+
+	var greensClassRes2 []*model.GreensClassifyRes
+	for _,v := range greensClassifysRes {
+		greensClassRes2 = append(greensClassRes2,v)
+	}
+	this.ReturnJson(map[string]interface{}{"code":0,"data":greensClassifys,"greens":greens,"new_date":greensClassRes2},200)
 //}
 }
 //func (this *GreensController) Ceshi() {}
